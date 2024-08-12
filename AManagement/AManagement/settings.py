@@ -14,7 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+MEDIA_ROOT = f"{BASE_DIR}/Apartment/static/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'Apartment.User'
+
+import cloudinary
+
+cloudinary.config(
+    cloud_name="dr9h3ttpy",
+    api_key="938152162715573",
+    api_secret="IIJZy3CtSGsMGw1JVyBHSftoCBU"
+)
 
 # Application definition
 
@@ -37,7 +46,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Apartment.apps.ApartmentConfig',
+    'ckeditor',
+    'ckeditor_uploader',
+    'rest_framework',
+    'drf_yasg',
+    'oauth2_provider'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
+}
+
+CKEDITOR_UPLOAD_PATH = "ckeditors/images/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,6 +73,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'AManagement.urls'
+
+OAUTH2_PROVIDER = {
+    'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore'
+}
 
 TEMPLATES = [
     {
@@ -70,13 +97,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'AManagement.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'apartment',
+        'USER': 'root',
+        'PASSWORD': 'Admin@123',
+        'HOST': ''  # mặc định localhost
     }
 }
 
@@ -121,3 +152,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CLIENT_ID = 'hQamMl5T3mBbywTcrXA8O35tpjH2pH2aXzKg1BkN'
+CLIENT_SECRET = 'Vah5ydeCzPQxQuXH5kNwO5PEtXHr6tDlg0Ms01NzkIMKXYkytHG84Lox8Gows0KSoamSJKoxPmueC3HUgLAeYgukBz7AWfOafnsNENSeAleYBa3egyYWN4X05T3eoak0'
