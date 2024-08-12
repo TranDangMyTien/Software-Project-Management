@@ -4,7 +4,6 @@ from django.db import models
 # thừa hưởng thuộc tính của nó nhưng muốn dùng của mình để chứng thực
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
-from django.utils.translation import gettext_lazy as _
 from cloudinary.models import CloudinaryField
 from ckeditor.fields import RichTextField
 
@@ -28,11 +27,11 @@ class User(AbstractUser):
     avatar_acount = CloudinaryField(null=True)
     change_password_required = models.BooleanField(default=False)
 
-    def save(self, *args, **kwargs):
-        # Băm mật khẩu nếu mật khẩu đã được thiết lập
-        if self.password:
-            self.set_password(self.password)
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     # Băm mật khẩu nếu mật khẩu đã được thiết lập
+    #     if self.password:
+    #         self.set_password(self.password)
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
