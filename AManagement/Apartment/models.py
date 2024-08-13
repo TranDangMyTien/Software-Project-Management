@@ -28,11 +28,6 @@ class User(AbstractUser):
     avatar_acount = CloudinaryField(null=True)
     change_password_required = models.BooleanField(default=False)
 
-    def save(self, *args, **kwargs):
-        # Băm mật khẩu nếu mật khẩu đã được thiết lập
-        if self.password:
-            self.set_password(self.password)
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
