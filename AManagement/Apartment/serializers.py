@@ -62,3 +62,18 @@ class UpdateResidentSerializer(serializers.ModelSerializer):
                 'write_only': True
             }
         }
+
+class ForgotPasswordSerializers(serializers.ModelSerializer):
+    email = serializers.EmailField(source='user.email', read_only=True)
+
+    class Meta:
+        model = People
+        fields = ['name_people', 'email','identification_card']
+
+
+class PeopleSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = People
+        # filter chỉ định các trường serialize ra pare thành json để gửi ra bên ngoài để client gọi API
+        fields = ['name_people', 'birthday', 'sex', 'phone', 'expiry', 'expiry', 'ApartNum', 'identification_card',]
+

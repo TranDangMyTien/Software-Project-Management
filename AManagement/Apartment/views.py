@@ -13,6 +13,69 @@ from rest_framework.response import Response as DRFResponse
 
 
 # Create your views here.
+
+class ResidentLoginViewset(viewsets.ViewSet, generics.ListAPIView):  # API Người dùng đăng nhập
+    queryset = User.objects.filter(is_active=True)
+    serializer_class = UserSerializers
+    parser_classes = [parsers.MultiPartParser, JSONParser, FormParser]
+
+    def get_permissions(self):
+        if self.action in ['upload_avatar', 'get_admin']:
+            return [permissions.IsAuthenticated()]
+
+        return [permissions.AllowAny()]
+
+    # Khi nguời dùng đăng nhập lần đầu tiên thì bắt buộc đổi mk + avt
+
+    @action(methods=['post'], url_path='upload_avatar', detail=False)
+    def update_account(self, request):
+        user = request.user  # Người dùng đang đăng nhập
+
+        try:
+            if user.change_password_required:
+                # Nếu change_password_required là True, chỉ xuất ra dữ liệu của tài khoản
+                serializer = UpdateResidentSerializer(user)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                user.password = request.data.get('password')
+                avatar_file = request.data.get('avatar')
+
+                new_avatar = cloudinary.uploader.upload(avatar_file)
+                user.avatar_acount = new_avatar['secure_url']
+                user.change_password_required = True
+                user.save()
+                return Response({'message': 'Avatar uploaded successfully'}, status=status.HTTP_201_CREATED)
+
+        except User.DoesNotExist:
+            return Response({"message": "Account not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    # Thong tin tai khoang User
+    @action(methods=['get'], url_path='get_user', detail=False)  # Người dùng xem thông tin user đăng nhập của mình
+    def get_user(self, request):
+        # Lấy người dùng đang đăng nhập từ request
+        current_user = request.user
+        user = User.objects.filter(id=current_user.id).first()
+        serialized = self.serializer_class(user).data
+        return Response(serialized, status=status.HTTP_200_OK)
+
+    # def get_queryset(self):
+    #     queryset = self.queryset
+    #
+    #     q = self.request.query_params.get('q')
+    #     if q:
+    #         queryset = queryset.filter(name_acount__icontains=q)
+    #
+    #     ad_id = self.request.query_params.get('admin_id')
+    #
+    #     if ad_id:
+    #         queryset = queryset.filter(admin_id=ad_id)
+    #     return queryset
+    @action(methods=['get'], url_path='get_admin', detail=False)  # Người dùng xem id và ten admin
+    def get_admin(self, request):
+        # Lấy người dùng đang đăng nhập từ request
+        user = User.objects.filter(user_role=User.EnumRole.ADMIN).all()
+        serialized = AdminSerializers(user, many=True).data
+        return Response(serialized, status=status.HTTP_200_OK)
 class BillViewSet(viewsets.ViewSet, generics.ListAPIView):
 
     def get_permissions(self):
@@ -90,3 +153,90 @@ class ResidentLoginViewset(viewsets.ViewSet, generics.ListAPIView, generics.Crea
     def get_current_user(self, request):
         user = request.user
         return Response(UserSerializers(user).data)
+
+# API INFO NGUOI DUNG
+class InfoViewSet(viewsets.ViewSet, generics.ListAPIView):
+    queryset = People.objects.filter(is_active=True)
+    serializer_class = ForgotPasswordSerializers
+
+    # API tạo code xử lý quên mật khẩu
+    @action(methods=['post'], url_path='create_passForgot', detail=False)
+    def create_passForgot(self, request):
+        name_people = request.data.get('name_people')
+        identification_card = request.data.get('identification_card')
+
+        try:
+            person = People.objects.get(identification_card=identification_card, name_people=name_people)
+        except People.DoesNotExist:
+            return Response({"message": "Không tìm thấy người dùng"},
+                            status=status.HTTP_404_NOT_FOUND)
+
+        # Tạo mã code ngẫu nhiên
+        code = ''.join(random.choices(string.digits, k=6))
+
+        # Xử lý gửi mail
+        yag = yagmail.SMTP("phanloan2711@gmail.com", 'mpgnbisxmfgwpdbg')
+        to = person.user.email
+        subject = 'CHUNG CƯ HIỀN VY: Mã xác thực đổi mật khẩu'
+        body = f'Mã xác thực của bạn là: {code}'
+        yag.send(to=to, subject=subject, contents=body)
+
+        # Lưu mã code vào session của người dùng
+        request.session['verification_code'] = code
+        request.session['user_id'] = person.user.id
+        request.session.modified = True  # Đảm bảo session được cập nhật
+
+        return Response({"message": "Mã xác thực đã được gửi qua email", "code": code}, status=status.HTTP_200_OK)
+
+    # API gui mat khau moi
+    @action(methods=['post'], url_path='reset_password', detail=False)
+    def reset_password(self, request):
+        code = request.data.get('code')
+        new_password = request.data.get('password')
+        print(new_password)
+
+        # Lấy mã code đã lưu trong session của người dùng
+        session_code = request.session.get('verification_code')
+        user_id = request.session.get('user_id')
+
+        if not session_code or not user_id:
+            return Response({"message": "Session không hợp lệ hoặc đã hết hạn"}, status=status.HTTP_400_BAD_REQUEST)
+
+        if code != session_code:
+            return Response({"message": "Mã xác thực không hợp lệ"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return Response({"message": "Không tìm thấy người dùng"}, status=status.HTTP_404_NOT_FOUND)
+
+        # Đặt mật khẩu mới cho người dùng
+        user.password = new_password
+        # user.set_password(new_password)
+        user.change_password_required = True
+        user.save()
+
+        # Xóa mã code khỏi session sau khi đã sử dụng
+        del request.session['verification_code']
+        del request.session['user_id']
+
+        return Response({"message": "Mật khẩu đã được đặt lại thành công"}, status=status.HTTP_200_OK)
+
+
+class InfoPeopleViewSet(viewsets.ViewSet, generics.ListAPIView):
+    queryset = People.objects.filter(is_active=True)
+    serializer_class = PeopleSerializers
+
+    @action(methods=['get'], url_path='get_infopeople', detail=False)
+    def get_infopeople(self, request):
+        # Lấy người dùng đăng nhập hiện tại
+        user = request.user
+        try:
+            # Tìm thông tin People tương ứng với người dùng
+            people_data = People.objects.get(user=user)
+        except People.DoesNotExist:
+            return Response({"message": "Không tìm thấy thông tin người dùng"}, status=status.HTTP_404_NOT_FOUND)
+
+        serialized_data = self.serializer_class(people_data).data
+        return Response(serialized_data, status=status.HTTP_200_OK)
+
