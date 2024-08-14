@@ -16,6 +16,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_ROOT = f"{BASE_DIR}/Apartment/static/"
 
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'https://4425-171-243-49-117.ngrok-free.app']
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -47,11 +49,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Apartment.apps.ApartmentConfig',
-    'ckeditor',
-    'ckeditor_uploader',
     'rest_framework',
     'drf_yasg',
-    'oauth2_provider'
+    'oauth2_provider',
+    'ckeditor',
+    'ckeditor_uploader',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -59,8 +62,11 @@ REST_FRAMEWORK = {
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
     )
 }
-
 CKEDITOR_UPLOAD_PATH = "ckeditors/images/"
+
+
+OAUTH2_PROVIDER = {
+    'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,9 +80,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'AManagement.urls'
 
-OAUTH2_PROVIDER = {
-    'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore'
-}
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',  # Địa chỉ IP hoặc tên miền của ứng dụng React Native
+    'http://192.168.1.222:8081:delete',
+    'exp://192.168.1.222:8081:delete'# Ví dụ: địa chỉ IP của Metro bundler
+    # Thêm các địa chỉ IP hoặc tên miền khác nếu cần
+)
+
 
 TEMPLATES = [
     {
@@ -152,5 +165,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 CLIENT_ID = 'hQamMl5T3mBbywTcrXA8O35tpjH2pH2aXzKg1BkN'
 CLIENT_SECRET = 'Vah5ydeCzPQxQuXH5kNwO5PEtXHr6tDlg0Ms01NzkIMKXYkytHG84Lox8Gows0KSoamSJKoxPmueC3HUgLAeYgukBz7AWfOafnsNENSeAleYBa3egyYWN4X05T3eoak0'
+
