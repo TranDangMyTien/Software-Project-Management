@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7c8371a-c991-4e11-ae27-cdb750959e57" name="Changes" comment="">
+
       <change afterPath="$PROJECT_DIR$/Apartment/form.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Apartment/paginators.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Apartment/serializers.py" afterDir="false" />
@@ -18,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/Apartment/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Apartment/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Apartment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Apartment/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+
         <option value="Python Script" />
       </list>
     </option>
@@ -67,7 +70,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5b207ade9991-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17890.14" />
+        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
       </set>
     </attachedChunks>
   </component>

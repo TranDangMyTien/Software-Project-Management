@@ -1,4 +1,4 @@
-from django.contrib import admin
+
 from django.utils.html import mark_safe
 from .models import *
 from django.urls import reverse
@@ -9,6 +9,9 @@ from django.db.models import Count
 from django.template.response import TemplateResponse
 from django.forms import Textarea
 from django.shortcuts import get_object_or_404, redirect
+
+from oauth2_provider.models import Application, AccessToken, Grant, IDToken, RefreshToken
+
 
 
 class UserResidentSet(admin.ModelAdmin):
@@ -40,14 +43,6 @@ class UserResidentSet(admin.ModelAdmin):
             '<a href="{}" style="background-color: #4CAF50; border: none; color: white; padding: 8px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 4px; cursor: pointer;">Edit</a>',
             edit_url)
 
-    # class Media:
-    #     # Viết css cho trang
-    #     css = {
-    #         'all': ('/static/css/styleAcount.css',)
-    #     }
-    # ietses js cho trang
-
-    # js = ('/satic/......', )
 
     def save_model(self, request, obj, form, change):
         # Kiểm tra xem có phải là tạo mới đối tượng không
@@ -69,7 +64,6 @@ class CarCardSet(admin.ModelAdmin):
             '<a href="{}" style="background-color: #4CAF50; border: none; color: white; padding: 8px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 4px; cursor: pointer;">Edit</a>',
             edit_url)
 
-
 class PeopleSet(admin.ModelAdmin):
     list_display = ['id', 'name_people', 'sex', 'phone', 'birthday', 'ApartNum','user', 'edit']
     search_fields = ['id', 'name_people']
@@ -79,7 +73,6 @@ class PeopleSet(admin.ModelAdmin):
         return format_html(
             '<a href="{}" style="background-color: #4CAF50; border: none; color: white; padding: 8px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 4px; cursor: pointer;">Edit</a>',
             edit_url)
-
 
 class GoodsInlineAdmin(admin.StackedInline):
     model = Goods
@@ -121,6 +114,12 @@ class GoodSet(admin.ModelAdmin):
         return format_html(
             '<a href="{}" style="background-color: #4CAF50; border: none; color: white; padding: 8px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 4px; cursor: pointer;">Edit</a>',
             edit_url)
+class ApartmentManagementAdmin(admin.AdminSite):
+    site_header = "HỆ THỐNG QUẢN LÝ CHUNG CƯ"
+
+
+admin_site = ApartmentManagementAdmin('myapartment')
+
 
 
 class BillSet(admin.ModelAdmin):
@@ -206,3 +205,12 @@ admin.site.register(Bill, BillSet)
 
 admin.site.register(Survey, SurveyAdmin)
 admin.site.register(SurveyResponse, SurveyResponseAdmin)
+
+admin_site.register(Application)
+admin_site.register(AccessToken)
+admin_site.register(Grant)
+admin_site.register(IDToken)
+admin_site.register(RefreshToken)
+
+# Register your models here
+

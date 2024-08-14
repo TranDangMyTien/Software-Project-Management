@@ -4,7 +4,6 @@ from django.db import models
 # thừa hưởng thuộc tính của nó nhưng muốn dùng của mình để chứng thực
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
-from django.utils.translation import gettext_lazy as _
 from cloudinary.models import CloudinaryField
 from ckeditor.fields import RichTextField
 
