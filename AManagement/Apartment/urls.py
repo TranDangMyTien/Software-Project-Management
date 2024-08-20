@@ -1,3 +1,5 @@
+
+
 from django.db import router
 from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
@@ -16,6 +18,7 @@ router.register(r'questions', views.QuestionViewSet)
 router.register(r'surveyresponses', views.SurveyResponseViewSet)
 router.register(r'answers', views.AnswerViewSet)
 router.register('goods', views.GoodsViewSet)
+
 
 urlpatterns = [
     path('', include(router.urls)),

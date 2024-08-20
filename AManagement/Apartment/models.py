@@ -4,7 +4,6 @@ from django.db import models
 # thừa hưởng thuộc tính của nó nhưng muốn dùng của mình để chứng thực
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
-from django.utils.translation import gettext_lazy as _
 from cloudinary.models import CloudinaryField
 from ckeditor.fields import RichTextField
 
@@ -169,3 +168,15 @@ class Answer(models.Model):
 
     def __str__(self):
         return f"Answer to {self.question} in {self.response}" # Trả lời cho {câu hỏi} tại {Kết quả khảo sát}
+
+class CarCard(BaseModel):
+    class EnumStatusCard(models.TextChoices):
+        UN = 'Unconfimred'
+        WAIT = 'Wait_for_confirmation'
+        CONFIRMER = 'Confirmed'
+
+    area = models.CharField(max_length=255)
+    status_card = models.CharField(max_length=50, choices=EnumStatusCard.choices,
+                                   default=EnumStatusCard.WAIT)  # Trạng thái thẻ xe
+    vehicle_type = models.CharField(max_length=255, default='motorbike')
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
