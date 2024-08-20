@@ -320,3 +320,4 @@ class CarCardViewset(viewsets.ViewSet, generics.ListAPIView):
 
         carcard.delete()
         return Response({"message": "Thẻ xe đã được xóa thành công."}, status=status.HTTP_200_OK)
+

@@ -11,6 +11,7 @@ router.register('Bill', views.BillViewSet)
 router.register('User', views.ResidentLoginViewset)
 router.register('CarCard', views.CarCardViewset)
 
+
 urlpatterns = [
     path('', include(router.urls)),
 
