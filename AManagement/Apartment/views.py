@@ -1,11 +1,8 @@
 import random
 import string
-
 import cloudinary
 import yagmail
-from django.db.models import Q
 from rest_framework import viewsets, generics, status, parsers, permissions
-from Apartment import serializers, paginators
 from django.shortcuts import render
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -23,11 +20,10 @@ import uuid
 import requests
 import hmac
 import hashlib
+from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.response import Response as DRFResponse
-
-
 
 # API TỦ ĐỒ
 class BoxViewSet(viewsets.ViewSet, generics.ListAPIView):
@@ -42,6 +38,7 @@ class BoxViewSet(viewsets.ViewSet, generics.ListAPIView):
         box_user = Box.objects.filter(user_admin=current_user.id)
         serialized_data = self.serializer_class(box_user, many=True).data
         return Response(serialized_data, status=status.HTTP_200_OK)
+
 
 
 class ResidentLoginViewset(viewsets.ViewSet, generics.ListAPIView):  # API Người dùng đăng nhập
@@ -106,7 +103,6 @@ class ResidentLoginViewset(viewsets.ViewSet, generics.ListAPIView):  # API Ngư�
         user = User.objects.filter(user_role=User.EnumRole.ADMIN).all()
         serialized = AdminSerializers(user, many=True).data
         return Response(serialized, status=status.HTTP_200_OK)
-
 
 class BillViewSet(viewsets.ViewSet, generics.ListAPIView):
 
