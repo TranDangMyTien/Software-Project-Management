@@ -9,6 +9,7 @@ import { MyDispatchContext, MyUserContext } from "./components/utils/MyContext";
 import MyUserReducer from "./components/Myreducer/MyUserReducer";
 import Home from "./components/home/Home";
 import RegisterParking from "./components/car/RegisterParking";
+import Cabinet from "./components/cabinet/Cabinet";
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register-parking" element={<RegisterParking />} />
-
+            <Route path="/cabinet" element={<Cabinet />} />
           </Routes>
           <Footer />
         </MyDispatchContext.Provider>
