@@ -21,30 +21,6 @@ class UserSerializers(serializers.ModelSerializer):
         rep = super().to_representation(instance)
         rep['avatar_acount'] = instance.avatar_acount.url
 
-
-
-class BillSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Bill
-        # filter chỉ định các trường serialize ra pare thành json để gửi ra bên ngoài để client gọi API
-        fields = ['id', 'name_bill', 'money', 'decription', 'type_bill', 'status_bill', 'user_resident', 'created_date',
-                  'updated_date', ]
-
-
-class UserSerializers(serializers.ModelSerializer):
-    def create(self, validated_data):
-        data = validated_data.copy()
-        u = User(**data)
-        u.set_password(u.password)
-        u.save()
-
-        return u
-
-    def to_representation(self, instance):
-        rep = super().to_representation(instance)
-        if instance.avatar_acount:
-            rep['avatar_acount'] = instance.avatar_acount.url
-
         return rep
 
     class Meta:
@@ -52,19 +28,11 @@ class UserSerializers(serializers.ModelSerializer):
         # filter chỉ định các trường serialize ra pare thành json để gửi ra bên ngoài để client gọi API
         fields = ['id', 'username', 'password', 'avatar_acount', 'change_password_required', 'email']
 
-        extra_kwargs = {
-            "password": {
-                "write_only": True,
-            },
-        }
-
-
 class AdminSerializers(serializers.ModelSerializer):
     class Meta:
         model = User
         # filter chỉ định các trường serialize ra pare thành json để gửi ra bên ngoài để client gọi API
-        fields = ['id', 'username', ]
-
+        fields = ['id', 'username',]
 
 #         extra_kwargs = {# các trường chí ghi chớ không đọc
 #                 'pass_acount': {
@@ -84,7 +52,6 @@ class UpdateResidentSerializer(serializers.ModelSerializer):
                 'write_only': True
             }
         }
-
 
 
 class BoxSerializers(serializers.ModelSerializer):
@@ -122,6 +89,7 @@ class BillSerializers(serializers.ModelSerializer):
         fields = ['id', 'name_bill', 'money', 'decription', 'type_bill', 'status_bill', 'user_resident', 'created_date',
                   'updated_date', ]
 
+
 class ForgotPasswordSerializers(serializers.ModelSerializer):
     email = serializers.EmailField(source='user.email', read_only=True)
 
@@ -135,6 +103,8 @@ class PeopleSerializers(serializers.ModelSerializer):
         model = People
         # filter chỉ định các trường serialize ra pare thành json để gửi ra bên ngoài để client gọi API
         fields = ['name_people', 'birthday', 'sex', 'phone', 'expiry', 'expiry', 'ApartNum', 'identification_card',]
+
+
 
 class SurveySerializer(serializers.ModelSerializer):
     class Meta:
@@ -154,10 +124,13 @@ class SurveyResponseSerializer(serializers.ModelSerializer):
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-
-class CarCardSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = CarCard
-        # filter chỉ định các trường serialize ra pare thành json để gửi ra bên ngoài để client gọi API
         fields = '__all__'
 
+
+class UserBillsRequestSerializer(serializers.Serializer):
+    id_user = serializers.IntegerField()
+
+    def validate_id_user(self, value):
+        if value <= 0:
+            raise serializers.ValidationError("User ID must be a positive integer.")
+        return value

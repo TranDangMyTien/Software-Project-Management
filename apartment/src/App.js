@@ -10,6 +10,8 @@ import MyUserReducer from "./components/Myreducer/MyUserReducer";
 import Home from "./components/home/Home";
 import RegisterParking from "./components/car/RegisterParking";
 import Cabinet from "./components/cabinet/Cabinet";
+import Bill from './components/bill/Bill';
+import InvoiceInfo from './components/bill/InvoiceInfo';
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/register-parking" element={<RegisterParking />} />
             <Route path="/cabinet" element={<Cabinet />} />
+            <Route path='/bill' element={<Bill/>} />
+            <Route path="/invoice" element={<InvoiceInfo/>} />
           </Routes>
           <Footer />
         </MyDispatchContext.Provider>

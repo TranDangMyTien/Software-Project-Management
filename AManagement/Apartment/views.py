@@ -106,14 +106,15 @@ class ResidentLoginViewset(viewsets.ViewSet, generics.ListAPIView):  # API Ngư�
 
 class BillViewSet(viewsets.ViewSet, generics.ListAPIView):
 
-    def get_permissions(self):
-        if self.action in ['get_bill', 'upload_imgbank', ]:
-            return [permissions.IsAuthenticated()]
-
-        return [permissions.AllowAny()]
+    # def get_permissions(self):
+    #     if self.action in ['get_bill', 'upload_imgbank', ]:
+    #         return [permissions.IsAuthenticated()]
+    #
+    #     return [permissions.AllowAny()]
 
     queryset = Bill.objects.filter(is_active=True)
     serializer_class = BillSerializers
+
 
     # Xem hóa đơn của người dùng hiện có
     @action(methods=['get'], url_path='get_bill', detail=False)
@@ -523,4 +524,3 @@ class AnswerViewSet(viewsets.ViewSet):
             return Response({'error': 'Question does not exist'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-

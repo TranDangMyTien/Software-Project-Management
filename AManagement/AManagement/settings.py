@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_ROOT = f"{BASE_DIR}/Apartment/static/"
-
 CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'https://4425-171-243-49-117.ngrok-free.app']
 
 # Quick-start development settings - unsuitable for production
@@ -62,8 +61,8 @@ REST_FRAMEWORK = {
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
     )
 }
-CKEDITOR_UPLOAD_PATH = "ckeditors/images/"
 
+CKEDITOR_UPLOAD_PATH = "ckeditors/images/"
 
 OAUTH2_PROVIDER = {
     'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore'
@@ -91,7 +90,6 @@ CORS_ORIGIN_WHITELIST = (
     # Thêm các địa chỉ IP hoặc tên miền khác nếu cần
 )
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -111,16 +109,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'AManagement.wsgi.application'
 
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'apartment',
+        'NAME': 'apartmentdb',
         'USER': 'root',
-        'PASSWORD': 'Admin@123',
+        'PASSWORD': 'm1234567890',
         'HOST': ''  # mặc định localhost
     }
 }
@@ -166,7 +163,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CLIENT_ID = 'hQamMl5T3mBbywTcrXA8O35tpjH2pH2aXzKg1BkN'
-CLIENT_SECRET = 'Vah5ydeCzPQxQuXH5kNwO5PEtXHr6tDlg0Ms01NzkIMKXYkytHG84Lox8Gows0KSoamSJKoxPmueC3HUgLAeYgukBz7AWfOafnsNENSeAleYBa3egyYWN4X05T3eoak0'
+CLIENT_ID = ''
+CLIENT_SECRET = ''
 

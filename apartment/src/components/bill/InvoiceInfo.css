@@ -1,0 +1,107 @@
+/* InvoiceInfo.css */
+
+/* Container style */
+.container {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+/* Loading container */
+.loadingContainer {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+/* Card style */
+.card {
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    elevation: 3;
+}
+
+/* Status container style */
+.statusContainer {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+/* Badge style */
+.badgeUnpaid {
+    background-color: red;
+    color: #ffffff;
+    padding-horizontal: 20px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.badgePaid {
+    background-color: green;
+    color: #ffffff;
+    padding-horizontal: 20px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Title style */
+.title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Paragraph style */
+.money {
+    font-size: 16px;
+    color: #333333;
+}
+
+.paragraph {
+    font-size: 14px;
+    color: #666666;
+}
+
+/* Payment button style */
+.paymentButton {
+    margin-top: 10px;
+}
+
+/* Modal style */
+.modalContainer {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalContent {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.closeButton {
+    align-items: center;
+    margin-bottom: 13px;
+}
+
+.closeButtonText {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.paymentOptionButton {
+    margin-bottom: 10px;
+}
