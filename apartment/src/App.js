@@ -12,7 +12,8 @@ import RegisterParking from "./components/car/RegisterParking";
 import Cabinet from "./components/cabinet/Cabinet";
 import Bill from './components/bill/Bill';
 import InvoiceInfo from './components/bill/InvoiceInfo';
-
+import Feedback from './components/Feedback/Feedback';
+import FeedbackList from './components/Feedback/FeedbackList';
 
 function App() {
   const [user, dispatch] = useReducer(
@@ -30,6 +31,8 @@ function App() {
             <Route path="/cabinet" element={<Cabinet />} />
             <Route path='/bill' element={<Bill/>} />
             <Route path="/invoice" element={<InvoiceInfo/>} />
+            <Route path="/feedback" element={<FeedbackList />} />
+            <Route path="/create_feedback" element={<Feedback />} />
           </Routes>
           <Footer />
         </MyDispatchContext.Provider>

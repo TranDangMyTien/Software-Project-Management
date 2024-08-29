@@ -22,5 +22,6 @@ router.register('goods', views.GoodsViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 
 ]
