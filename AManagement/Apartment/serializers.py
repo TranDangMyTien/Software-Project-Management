@@ -75,11 +75,11 @@ class GoodsSerializers(serializers.ModelSerializer):
 
 
 class LettersSerializers(serializers.ModelSerializer):
-    user_admin = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False, many=True)
+    # user_admin = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False, many=True)
 
     class Meta:
         model = Letters
-        fields = ['title_letter', 'content', 'img_letter', 'user_admin', 'people', 'created_date']
+        fields = ['title_letter', 'content', 'img_letter', 'people', 'created_date']
 
 
 class BillSerializers(serializers.ModelSerializer):

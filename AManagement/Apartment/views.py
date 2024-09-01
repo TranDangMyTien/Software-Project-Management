@@ -104,7 +104,7 @@ class ResidentLoginViewset(viewsets.ViewSet, generics.ListAPIView):  # API Ngư�
         serialized = AdminSerializers(user, many=True).data
         return Response(serialized, status=status.HTTP_200_OK)
 
-class BillViewSet(viewsets.ViewSet, generics.ListAPIView):
+class BillViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIView):
 
     # def get_permissions(self):
     #     if self.action in ['get_bill', 'upload_imgbank', ]:
@@ -414,37 +414,33 @@ class LettersViewSet(viewsets.ViewSet):
         title_letter = request.data.get('title_letter')
         content = request.data.get('content')
         img_letter = request.data.get('img_letter')
-        user_admin_ids = request.data.get('user_admin', [])
+        user = self.request.user
 
-        # Xác thực người dùng và lấy thông tin People
-        if request.user.is_authenticated:
-            try:
-                people = request.user.people  # Lấy thông tin People của user đăng nhập
-            except People.DoesNotExist:
-                return Response({"error": "People profile does not exist for this user."},
-                                status=status.HTTP_404_NOT_FOUND)
-        else:
-            return Response({"error": "Authentication credentials were not provided."},
-                            status=status.HTTP_401_UNAUTHORIZED)
+        # Kiểm tra và tạo People nếu chưa tồn tại
+        people, created = People.objects.get_or_create(user=user, defaults={
+            'name_people': user.username,  # Sử dụng tên người dùng làm mặc định
+            'birthday': None,
+            'sex': 'Unknown',
+            'phone': '',
+            'expiry': 0,
+            'ApartNum': '',
+            'identification_card': ''
+        })
 
         # Tạo một đối tượng Letters để lưu vào cơ sở dữ liệu
         letters_data = {
             'title_letter': title_letter,
             'content': content,
             'img_letter': img_letter,
-            'people': people.id  # Gán people_id vào đối tượng Letters
+            'people': people.id  # Sử dụng ID của đối tượng People
         }
 
         # Tạo và lưu đối tượng Letters
         serializer = LettersSerializers(data=letters_data)
         if serializer.is_valid():
             letters = serializer.save()
-
-            # Thêm các admin được chọn vào danh sách user_admin của Letters
-            if user_admin_ids:
-                letters.user_admin.add(*user_admin_ids)
-
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -471,7 +467,6 @@ class QuestionViewSet(viewsets.ViewSet, generics.ListAPIView):
 
 from django.db.models import Case, When, BooleanField, F, Value
 
-
 class SurveyResponseViewSet(viewsets.ModelViewSet):
     queryset = SurveyResponse.objects.all()
     serializer_class = SurveyResponseSerializer
@@ -497,7 +492,6 @@ class SurveyResponseViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Question does not exist'}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 class AnswerViewSet(viewsets.ViewSet):
     queryset = Answer.objects.all()

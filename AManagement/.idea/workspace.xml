@@ -7,8 +7,8 @@
     <list default="true" id="f7c8371a-c991-4e11-ae27-cdb750959e57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AManagement/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AManagement/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AManagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/AManagement/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Apartment/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Apartment/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Apartment/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Apartment/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Apartment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Apartment/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,15 +46,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "TranDangMyTien",
-    "last_opened_file_path": "D:/CCNLTHD/JobPortalApp/jobPortal",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;TranDangMyTien&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/QLDAPM/Software_Project_Management/Software-Project-Management/AManagement&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

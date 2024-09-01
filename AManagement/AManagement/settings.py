@@ -70,11 +70,6 @@ REST_FRAMEWORK = {
 
 CKEDITOR_UPLOAD_PATH = "ckeditors/images/"
 
-OAUTH2_PROVIDER = {
-    'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore',
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -161,17 +156,17 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-OAUTH2_PROVIDER = {
-    'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
-    'AUTHORIZATION_CODE_EXPIRE_SECONDS': 600,
-    'REFRESH_TOKEN_EXPIRE_SECONDS': 1209600,
-    'ROTATE_REFRESH_TOKENS': True,
-    'SCOPES': {
-        'read': 'Read scope',
-        'write': 'Write scope',
-    },
-}
-OAUTH2_PROVIDER = { 'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore' }
+# OAUTH2_PROVIDER = {
+#     'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
+#     'AUTHORIZATION_CODE_EXPIRE_SECONDS': 600,
+#     'REFRESH_TOKEN_EXPIRE_SECONDS': 1209600,
+#     'ROTATE_REFRESH_TOKENS': True,
+#     'SCOPES': {
+#         'read': 'Read scope',
+#         'write': 'Write scope',
+#     },
+# }
+# OAUTH2_PROVIDER = { 'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore' }
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CLIENT_ID = '183RXU5hBv3MZjfsfBmTZbfgIPM3OCu5lCYuNgBH'
 CLIENT_SECRET = 'MSUr1Q4trFAWEacXHlC2cZg8F56z1rISJTyuscNyNjHpzrr12zrwrcd4QFhVwLSXeKC8URbeEYw8k97s5qe41bHOVy5jdm66SdoiRW8YNXKmlLdluvOUZGM6nDWLcC7F'
