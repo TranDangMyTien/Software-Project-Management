@@ -1,0 +1,106 @@
+/* Center the login form on the page */
+/* body {
+    margin: 0;
+    padding: 0;
+    /* background: url('https://bcp.cdnchinhphu.vn/thumb_w/777/334894974524682240/2022/9/12/nha-chung-cu-16629517441581660227438.jpg') no-repeat center center fixed; */
+    /* background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+
+
+/* Adjust the login container to stand out against the background */
+.login-container {
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent background for the form */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the title and the welcome message */
+.nhi {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.nhi1 {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #000;
+}
+
+/* Style the form container */
+.login-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the input groups to include the icon */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Style the input fields */
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 35px; /* Adjust padding to make space for the icon on the right */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Style the icons inside the input fields */
+.input-group .input-icon {
+    position: absolute;
+    right: 10px; /* Place the icon on the right side */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #999;
+}
+
+/* Style the "Forgot password" link */
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Style the login button */
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Change button color on hover */
+.login-button:hover {
+    background-color: #0056b3;
+}

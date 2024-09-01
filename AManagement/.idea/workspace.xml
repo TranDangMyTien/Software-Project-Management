@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7c8371a-c991-4e11-ae27-cdb750959e57" name="Changes" comment="">
+    <list default="true" id="f7c8371a-c991-4e11-ae27-cdb750959e57" name="Changes" comment="Fix the API to create a reflection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AManagement/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AManagement/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Apartment/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/Apartment/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Apartment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Apartment/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apartment/node_modules/dotenv/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/../apartment/node_modules/dotenv/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apartment/node_modules/dotenv/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../apartment/node_modules/dotenv/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apartment/node_modules/dotenv/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../apartment/node_modules/dotenv/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apartment/node_modules/dotenv/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../apartment/node_modules/dotenv/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apartment/node_modules/dotenv/types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apartment/node_modules/dotenv/types/test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apartment/node_modules/dotenv/types/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apartment/node_modules/dotenv/types/tslint.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +77,19 @@
       <option name="presentableId" value="Default" />
       <updated>1721222730594</updated>
     </task>
+    <task id="LOCAL-00001" summary="Fix the API to create a reflection">
+      <option name="closed" value="true" />
+      <created>1725187672520</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725187672520</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fix the API to create a reflection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix the API to create a reflection" />
   </component>
 </project>

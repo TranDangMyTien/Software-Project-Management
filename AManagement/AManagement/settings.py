@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_ROOT = f"{BASE_DIR}/Apartment/static/"
-# CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['http://192.168.1.7:8000', 'https://4425-171-243-49-117.ngrok-free.app']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -29,6 +29,21 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'Apartment.User'
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:8000',  # Địa chỉ IP hoặc tên miền của ứng dụng React Native
+#     'http://192.168.1.222:8081:delete',
+#     'exp://192.168.1.222:8081:delete'# Ví dụ: địa chỉ IP của Metro bundler
+#     # Thêm các địa chỉ IP hoặc tên miền khác nếu cần
+# )
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://192.168.1.7:8000",
+]
+
 
 import cloudinary
 

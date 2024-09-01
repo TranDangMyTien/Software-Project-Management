@@ -1,0 +1,86 @@
+/* Centering and full-screen layout */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 75vh;
+    background-color: #f0f4f8; /* Light background for better contrast */
+}
+
+/* Title styling */
+.vy {
+    color: #333; /* Darker color for better readability */
+    margin-bottom: 20px;
+    font-size: 36px; /* Slightly smaller font size */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Form container */
+.goods-form {
+    background-color: #2c3e50;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 12px; /* Softer corners */
+    width: 380px; /* Adjusted width for consistency */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+}
+
+/* Input group styling */
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Reduced margin for balanced spacing */
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 8px; /* Softer corners */
+}
+
+/* Input field styling */
+.input_vy {
+    width: 100%; /* Full width input */
+    padding: 15px; /* More padding for better touch area */
+    border: none;
+    border-radius: 8px; /* Match border radius with container */
+    font-size: 18px; /* Slightly smaller font size for better fit */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+}
+
+/* Icon styling */
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f0f4f8; /* Match background with page */
+    padding: 10px; /* Consistent padding */
+    border-radius: 8px; /* Softer corners */
+    font-size: 20px; /* Slightly smaller icon */
+    color: #2c3e50; /* Match icon color with form background */
+}
+
+/* Button styling */
+button {
+    background-color: #15599e;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px; /* Softer corners */
+    cursor: pointer;
+    font-size: 18px; /* Larger font for readability */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+button:hover {
+    background-color: #0066cc; /* Darker shade on hover */
+}
+
+/* Centering the container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

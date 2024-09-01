@@ -1,0 +1,49 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Chiều cao của trang */
+    background-image: url("../static/img/background.jpg"); /* Đường dẫn đến hình nền */
+    background-size: cover; /* Kích thước hình nền để bao phủ toàn bộ phần tử */
+    background-position: center; /* Căn giữa hình nền */
+    background-repeat: no-repeat; /* Không lặp lại hình nền */
+    padding: 20px;
+    color: white; /* Màu chữ để dễ đọc trên nền hình */
+}
+
+.homeTitle {
+    margin-bottom: 20px;
+    font-size: 4rem; /* Kích thước chữ tiêu đề */
+    color: #d64c16; /* Màu chữ tiêu đề */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Thêm hiệu ứng bóng cho chữ */
+}
+
+.homeButtons {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các nút */
+}
+
+.homeButton {
+    margin-top: 100px;
+    width: 200px; /* Chiều rộng của các nút */
+    height: 150px;
+    padding: 10px; /* Khoảng cách bên trong */
+    font-size: 2rem; /* Kích thước chữ của nút */
+    font-weight: bold;
+    border: none; /* Bỏ đường viền của nút */
+    border-radius: 5px; /* Bo góc của nút */
+}
+
+.homeButton:hover {
+    background-color: rgba(29, 14, 231, 0.7); /* Thay đổi màu nền khi hover */
+}
+.btnl {
+    background-color: #e9eaee;
+    color: #031085; /* Màu chữ của nút */
+    border: 3px solid #031085;
+}
+.btnc {
+    background-color: #031085;
+    color: #e3e4ec; /* Màu chữ của nút */
+}

@@ -1,0 +1,81 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+h1 {
+    color: black;
+    margin-bottom: 20px;
+    height: 150px;
+    margin-top: 100px;
+    font-size: 50px;
+}
+
+.goods-form {
+    background-color: #0a397d;
+    padding: 20px;
+    border-radius: 8px;
+    width: 450px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 45px;
+    position: relative;
+    background-color: #ffffff;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 34px;
+}
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #e3e5e8;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #0080ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0066cc;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 450px);
+}
+.icon{
+    padding: 10px;
+    font-size: 25px;
+    background-color: #ffffff;
+}

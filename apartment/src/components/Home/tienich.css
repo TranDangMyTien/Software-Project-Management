@@ -1,0 +1,42 @@
+.home_utilities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 98%; /* Chiều cao của trang */
+    background-image: url("/src/static/img/background.jpg"); /* Đường dẫn đến hình nền */
+    background-size: cover; /* Kích thước hình nền để bao phủ toàn bộ phần tử */
+    background-position: center; /* Căn giữa hình nền */
+    background-repeat: no-repeat; /* Không lặp lại hình nền */
+    padding: 20px;
+    color: white;
+    /* margin: 2px; Màu chữ để dễ đọc trên nền hình */
+    width: 100%;
+}
+
+  .utilities {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các nút */
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .utility-item {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    align-self: center;
+    margin: 20px;
+    width: 250px; /* Chiều rộng của các nút */
+    height: 200px;
+  }
+  .btnl {
+    background-color: #e9eaee;
+    color: #031085; /* Màu chữ của nút */
+    border: 1px solid #031085;
+}
+.btnc {
+    background-color: #031085;
+    color: #e3e4ec; /* Màu chữ của nút */
+}
